@@ -1,0 +1,30 @@
+import random
+
+# Nhập n
+n = int(input("Nhập n: "))
+
+# Tạo ma trận A nxn với giá trị [-100, 100]
+A = [[random.randint(-100, 100) for _ in range(n)] for _ in range(n)]
+
+print("Ma trận A:")
+for row in A:
+    print(row)
+
+# Nhập k (0 ≤ k < n)
+k = int(input("Nhập k (0 ≤ k < n): "))
+
+# Tạo ma trận B bằng cách hoán đổi dòng k và cột k
+B = [row[:] for row in A]  # copy ma trận A
+
+for i in range(n):
+    for j in range(n):
+        # Nếu là dòng k → lấy từ cột k
+        if i == k:
+            B[i][j] = A[j][k]
+        # Nếu là cột k → lấy từ dòng k
+        elif j == k:
+            B[i][j] = A[k][i]
+
+print("Ma trận B (sau khi hoán chuyển dòng k và cột k):")
+for row in B:
+    print(row)
